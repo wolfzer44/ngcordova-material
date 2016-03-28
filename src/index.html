@@ -7,15 +7,15 @@
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <title>App LOL</title>
 </head>
-<body>
-  <div class="app">
-    <h1>App</h1>
+<body ng-app="starter">
+  <div class="app" ng-controller="MainCtrl as vm" >
+    <h1>{{vm.title}}</h1>
     <div id="deviceready" class="blink">
       <p class="event listening">Connecting to Device</p>
       <p class="event received">Device is Ready</p>
     </div>
   </div>
-<script type="text/javascript" src="cordova.js"></script>
-<script src="js/all.min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src="js/all.min.js"></script>
 </body>
 </html>
