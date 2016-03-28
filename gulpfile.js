@@ -7,34 +7,32 @@ const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 const nodeInspector = require('gulp-node-inspector');
 const browserSync = require('browser-sync').create();
+const clean = require('gulp-clean');
 
-gulp.task('default', ['browser-sync', 'debug', 'html', 'css', 'scripts-vendors', 'scripts' ,'all-scripts']);
+gulp.task('default', ['html', 'css', 'scripts', 'browser-sync']);
 
+gulp.task('clean-scripts', () => {
+  return gulp.src('www/*.js', {read: false})
+  .pipe(clean());
+});
 
-gulp.task('all-scripts', () => {
+gulp.task('clean-html', () => {
+  return gulp.src('./www/*.html')
+  .pipe(clean());
+});
+
+gulp.task('scripts', ['clean-scripts'], () => {
   return gulp.src([
-    './www/js/tmp/*.js'
+    './lib/angular/angular.min.js',
+    './lib/angular-material/angular-material.min.js',
+    './lib/angular-aria/angular-aria.min.js',
+    './lib/angular-animate/angular-animate.min.js',
+    './lib/angular-messages/angular-messages.min.js',
+    './lib/ngCordova/dist/ng-cordova.min.js',
+    './src/js/app/**/*.js'
   ])
   .pipe(concat('all.min.js'))
   .pipe(gulp.dest('./www/js/'));
-});
-
-gulp.task('scripts', () => {
-  return gulp.src([
-    './src/js/app/**/*.js'
-  ])
-  .pipe(concat('allmyjs.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./www/js/tmp/'));
-});
-
-gulp.task('scripts-vendors', () => {
-  return gulp.src([
-    './lib/angular/angular.min.js',
-    './lib/ngCordova/dist/ng-cordova.min.js'
-  ])
-  .pipe(concat('vendors.js'))
-  .pipe(gulp.dest('./www/js/tmp/'));
 });
 
 gulp.task('html', () => {
@@ -55,9 +53,9 @@ gulp.task('browser-sync', function() {
       baseDir: './www/'
     }
   });
-  gulp.watch('./src/js/**/*.js', ['scripts-vendors', 'scripts', 'all-scripts'])
+  gulp.watch('./src/js/**/*.js', ['scripts'])
   .on('change', browserSync.reload);
-  gulp.watch('./src/**/*.html', ['html'])
+  gulp.watch('./src/*.html', ['html'])
   .on('change', browserSync.reload);
   gulp.watch('./src/css/*.css', ['css'])
   .on('change', browserSync.reload);
