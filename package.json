@@ -1,0 +1,29 @@
+{
+  "name": "ngcordova-material",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolfzer44/ngcordova-material.git"
+  },
+  "keywords": [
+    "cordova",
+    "hibryd",
+    "ng-cordova"
+  ],
+  "author": "Matheus Oliveira, Itacir Pompeu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wolfzer44/ngcordova-material/issues"
+  },
+  "homepage": "https://github.com/wolfzer44/ngcordova-material#readme",
+  "dependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-node-inspector": "^0.1.0"
+  }
+}
