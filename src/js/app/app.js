@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  angular.module('starter', ['ngCordova','ngMaterial']);
+  angular.module('starter', ['ui.router', 'ngCordova', 'ngMaterial']);
 }());

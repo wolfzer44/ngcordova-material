@@ -3,10 +3,21 @@
   angular.module('starter')
   .controller('MainCtrl', main);
 
-  main.$inject = [];
+  main.$inject = ['$mdDialog'];
 
-  function main() {
+  function main($mdDialog) {
     var vm = this;
-    vm.title = 'Limp';
+    vm.open = function (ev) {
+      $mdDialog.show(
+        $mdDialog.alert()
+        .parent(angular.element(document.querySelector('md-button')))
+        .clickOutsideToClose(true)
+        .title('Start')
+        .textContent('add same tings here')
+        .ariaLabel('alert demp')
+        .ok('lets go it')
+        .targetEvent(ev)
+      );
+    };
   }
 }());
