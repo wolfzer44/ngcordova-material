@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "ngCordova": "^0.1.24-alpha"
+    "ngCordova": "^0.1.24-alpha",
+    "angular-material": "^1.0.6",
+    "angular-ui-router": "^0.2.18"
   }
 }
